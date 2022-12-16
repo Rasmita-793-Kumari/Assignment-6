@@ -1,0 +1,36 @@
+{{> header2}}
+
+<div class="container">
+    <div class="py-5 text-center">
+        {{!-- <img class="d-block mx-auto mb-4" src="https://img.freepik.com/free-vector/e-wallet-concept-illustration_114360-7561.jpg" alt="" width="72" height="72"> --}}
+        <h2 style="text-align: left;">Checkout</h2>
+    </div>
+
+
+<div class="form-outline form-white mb-4">
+<form name="checkout" action="/chekouthandle" method="post">
+  <label class="form-label" for="typeText">Credit Card</label>
+  <input
+    type="number"
+    id="typeText"
+    class="form-control form-control-lg"
+    size="17"
+    minlength="19"
+    maxlength="19"
+    pattern="[0-9]{16}"
+    title="Credit card number is required and must be 16 digits"
+    required
+  />
+
+<h4> Order Total:${{amount}}/- </h4>
+
+<button type="submit" class="btn btn-info btn-block btn-lg">
+  <div class="d-flex justify-content-between">
+    <span>Checkout <i class="bi bi-caret-right-fill"></i></span>
+  </div>
+</div>
+
+</button>
+</div>
+
+</form>

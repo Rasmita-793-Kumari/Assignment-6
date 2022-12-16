@@ -1,0 +1,36 @@
+
+
+{{>header}}
+<h2 class="display-6 text-center"><b>Login</b></h2>
+<div class="container">
+
+            {{#if succs}}
+                <div class="alert alert-info">{{succs}}</div>
+            {{/if}}
+
+            {{#if error}}
+                <div class="alert alert-danger">{{error}}</div>
+            {{/if}}
+
+        <form method="POST" action="/login">
+
+         <div class="form-floating mb-3">
+
+            <div class="form-floating mb-3" style="">
+                <input type="email" name="email" class="form-control" style="background-color: rgb(244, 233, 161);" id="floatingInput" placeholder="Email">
+                <label for="floatingInput">Email</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" name="password" class="form-control" style="background-color: rgb(244, 233, 161)"id="floatingInput" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                <label for="floatingInput">Password</label>
+              </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="login" class="btn btn-outline-dark bg-dark text-light"style="width: 80px;">
+            </div>
+
+            {{!-- <p><a class="border border-3" style="text-decoration:none" href="/signup"> Click Here</a></p> --}}
+
+        </form>
+</div>

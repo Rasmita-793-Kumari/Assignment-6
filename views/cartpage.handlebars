@@ -1,0 +1,94 @@
+{{> header2}}
+
+<section class="h-100 h-custom">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="h5"> Shopping Cart</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {{#each data}}
+
+              <tr>
+                <th scope="row">
+                  <div class="d-flex align-items-center">
+                    <img src="{{image}}" class="img-fluid rounded-3" style="width: 120px;" alt="Pizza">
+                    <div class="flex-column ms-4">
+                      <p class="mb-2">{{name}}</p>
+                    </div>
+                  </div>
+                </th>
+                <td class="align-middle">
+                  <div class="d-flex flex-row">
+                    <button class="btn  px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                      <a href="/updatecart/{{name}}?action=remove"><i class="bi bi-dash"></i></a>
+                    </button>
+
+                    <input id="form1" min="0" name="quantity" value="{{quantity}}" type="number"
+                      class="form-control form-control-sm" style="width: 50px;" />
+
+                    <button class="btn btn-link px-2"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                      {{!-- <a href="/cart/{{id}}"><i class="bi bi-plus"></i></a> --}}
+                      <a href="/updatecart/{{name}}?action=add"><i class="bi bi-plus"></i></a>
+                    </button>
+
+                    {{!-- clear icon --}}
+                    <a href="/updatecart/{{name}}?action=clear"><button class=" container bg-dark" style="color:white;">Delete</button></a>
+
+                  </div>
+                </td>
+                <td class="align-middle">
+                  <p class="mb-0" style="font-weight: 500;">{{price}}</p>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 border border-5" style="margin-top: 100px; border: solid rgb(2, 2, 2);">
+            <div class="card-header py-3">
+              <h5 class="mb-0"> CheckOut Details</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                {{#each data}}
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                  {{math @index "+" 1}}
+                  <span>₹: {{math this.price "*" this.quantity }} </span>
+                </li>
+                {{/each}}
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                  <div>
+                    <strong>Total amount</strong>
+                    <strong>
+                      <p class="mb-0">(+ GST)</p>
+                    </strong>
+                  </div>
+                  <span><strong>₹: {{total}}</strong></span>
+                </li>
+              </ul>
+
+              <a href="/checkout?amount={{total}}" class="btn btn-secondary btn-lg btn-block">
+                CheckOut
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  {{> footer}}
+</section>
